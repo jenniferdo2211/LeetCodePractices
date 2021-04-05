@@ -22,11 +22,8 @@ class Solution:
             return True
         
         isValidNode = node.val > lower and node.val < upper
-        if not isValidNode:
-            return False
         
-        isValidLeft = self.checkNode(node.left, lower, node.val)
-        if not isValidLeft:
-            return False
+        return isValidNode \
+            and self.checkNode(node.left, lower, node.val) \
+            and self.checkNode(node.right, node.val, upper)
         
-        return self.checkNode(node.right, node.val, upper)
